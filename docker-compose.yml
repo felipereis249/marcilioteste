@@ -1,0 +1,25 @@
+################################
+# Docker-compose PRODUÇÃO
+################################
+version: "3.7"
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+
+        ports:
+            - "80:80"
+
+        environment:
+            ##### Configurações fixas (manter os valores)
+            ############################################
+            APP_NAME: 'Aplicação Laravel Teste'
+            APP_KEY: 'base64:m7a8HwBxgxVaFkMqfyMEhT65fdmA96UgjDuI23syHeI='
+            APP_ENV: 'production'
+            APP_DEBUG: 'false'
+
+        image: marcilio-teste
+        container_name: marcilio-teste
+        restart: unless-stopped
+        working_dir: /usr/share/nginx/html
