@@ -9,7 +9,7 @@ COPY ./default.conf /etc/nginx/conf.d/
 WORKDIR $dir
 
 # Copy site content
-COPY . $dir
+COPY --chown=nginx:nginx . $dir
 
 # Running composer
 RUN composer clear-cache && \
