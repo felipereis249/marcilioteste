@@ -2,11 +2,14 @@ FROM wyveo/nginx-php-fpm:php81
 
 ARG dir=/usr/share/nginx/html
 
+# Copy nginx config files
+COPY ./default.conf /etc/nginx/conf.d/
+
 # Set working directory
 WORKDIR $dir
 
 # Copy site content
-COPY --chown=nginx:nginx . $dir
+COPY . $dir
 
 # Running composer
 RUN composer clear-cache && \
